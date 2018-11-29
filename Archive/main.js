@@ -1,4 +1,6 @@
 const squares = document.getElementsByTagName("td")
+let turnText = document.getElementsByClassName("playerTurn")
+
 const winCon = [
   [0, 1, 2],
   [3, 4, 5],
@@ -13,11 +15,44 @@ const winCon = [
 
 
 
+
+
+var playersTurn = true;
+//
 for (let i = 0; i < squares.length; i++) {
   squares[i].getAttribute("data-num")
-  sqaures[i].addEventListener("click", () => {
-    console.log("cone" + i);
+  squares[i].setAttribute("class", "");
+  squares[i].addEventListener("click", () => {
+    console.log("Tile clicked" + i);
+    onSquareClick(i)
   });
 }
+//for (let j = 0; j < squares.length; j++) {
+//squares[j].getAttribute("data-num")
+//squares[j].addEventListener("click", () => {
+//console.log("Click on Tile" + j);
+//squares[j].setAttribute("class", "O")
+//squares[j].innerHTML = "O"
+//});
+//}
+
+
+//on Square click
+function onSquareClick(i) {
+  if (playersTurn == true) {
+    squares[i].setAttribute("class", "X");
+    squares[i].innerHTML = "X";
+    playersTurn = false;
+    turnText[0].innerText = "It's Os turn";
+  } else {
+    squares[i].setAttribute("class", "O");
+    squares[i].innerHTML = "O";
+    playersTurn = true;
+    turnText[0].innerText = "It's Xs turn";
+  }
+
+}
+
+
 
 
