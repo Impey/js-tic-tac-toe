@@ -1,6 +1,7 @@
 const squares = document.getElementsByTagName("td")
 let turnText = document.getElementsByClassName("playerTurn")
-
+let reset = document.getElementById("reset")
+//All win conditions
 const winCon = [
   [0, 1, 2],
   [3, 4, 5],
@@ -37,7 +38,7 @@ for (let i = 0; i < squares.length; i++) {
 //}
 
 
-//on Square click
+//on Square click sets the x or o and changes whos turn it is
 function onSquareClick(i) {
   if (playersTurn == true) {
     squares[i].setAttribute("class", "X");
@@ -50,7 +51,15 @@ function onSquareClick(i) {
     playersTurn = true;
     turnText[0].innerText = "It's Xs turn";
   }
+  // would check win condition here i think
+}
+reset.addEventListener("click", () => {
+  resetGame();
+})
 
+
+function restGame() {
+  document.reload();
 }
 
 
